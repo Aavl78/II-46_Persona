@@ -3,6 +3,7 @@
     Private _Apellido As String
     Private _Edad As Integer
 
+
     Public Property Nombre As String
         Get
             Return _nombre
@@ -34,11 +35,14 @@
         Me.Nombre = "No hay nombre"
     End Sub
 
+
     Public Sub New(nombre As String, apellido As String, edad As Integer)
         Me.Nombre = nombre
         Me.Apellido = apellido
         Me.Edad = edad
     End Sub
-
+    Public Sub New(edad As Integer)
+        Me.Edad = edad
+    End Sub
 
 End Class
