@@ -6,6 +6,7 @@
     End Sub
     Protected Sub btn_guardar_Click(sender As Object, e As EventArgs)
         persona.Nombre = Txt_nombre.Text
-        'persona.Apellido
+        persona.Apellido = Txt_apellido.Text
+        Lbl_mensaje.Text = persona.Nombre + "" + persona.Apellido
     End Sub
 End Class
