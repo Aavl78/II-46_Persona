@@ -26,4 +26,23 @@ Public Class DataBaseHelper
 
     End Function
 
+
+    Public Function delete(ByRef id As Integer) As String
+        Try
+            Dim sql As String = "DELETE FROM Personas WHERE ID = @Id"
+            Dim parametros As New List(Of SqlParameter) From {
+            New SqlParameter("@ID", id)
+        }
+            Using Connetion As New SqlConnection(ConectionString)
+                Using command As New SqlCommand(sql, Connetion)
+                    command.Parameters.AddRange(parametros.ToArray)
+                    Connetion.Open()
+                    command.ExecuteNonQuery()
+                End Using
+            End Using
+
+        Catch ex As Exception
+        End Try
+        Return "Persona Eliminada"
+    End Function
 End Class
