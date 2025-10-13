@@ -45,4 +45,27 @@ Public Class DataBaseHelper
         End Try
         Return "Persona Eliminada"
     End Function
+    Public Function Update(ByRef Persona As Persona) As String
+        Try
+            Dim sql As String = "UPDATE Persona SET Nombre = @Nombre, Apellido = @Apellido, Edad = @Edad WHERE ID = @Id"
+            Dim Parametros As New List(Of SqlParameter) From {
+                New SqlParameter("@ID", Persona.ID),
+                New SqlParameter("@Nombre", Persona.Nombre),
+                New SqlParameter("@Apellido", Persona.Apellido),
+                New SqlParameter("@Edad", Persona.Edad)
+            }
+            Using connetion As New SqlConnection(ConectionString)
+                Using Command As New SqlCommand(sql, connetion)
+                    Command.Parameters.AddRange(Parametros.ToArray())
+                    connetion.Open()
+                    Command.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+
+        End Try
+        Return "Persona Actualizada"
+    End Function
+
+
 End Class
