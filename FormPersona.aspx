@@ -1,10 +1,17 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormPersona.aspx.vb" Inherits="Persona.FormPersona" %>
+﻿
+
+
+
+<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormPersona.aspx.vb" Inherits="Persona.FormPersona" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:HiddenField ID="editando" runat="server" />
     <asp:TextBox ID= "Txt_nombre" placeholder="Nombre" runat="server"></asp:TextBox>
     <asp:TextBox ID="Txt_apellido" placeholder="Apellido" runat="server"></asp:TextBox>
     <asp:TextBox ID="Txt_edad" placeholder="Edad" runat="server"></asp:TextBox>
     <asp:Button ID="btn_guardar" CssClass = "btn btn-primary" runat="server" Text="Guardar" OnClick="btn_guardar_Click" />
+    <asp:Button ID="btn_actualizar" CssClass = "btn btn-primary" runat="server" Text="Actualizar" OnClick="btn_actualizar_Click" Visible="False"/>
     <asp:Label ID="Lbl_mensaje" runat="server" Text=""></asp:Label>
     <asp:GridView ID="Gv_personas" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource" Width="1120px" OnRowDeleting="Gv_personas_RowDeleting" OnRowEditing ="Gv_personas_RowEditing" OnRowCancelingEdit="Gv_personas_RowCancelingEdit" OnRowUpdating="Gv_personas_RowUpdating" OnSelectedIndexChanged="Gv_personas_SelectedIndexChanged">
         <Columns>

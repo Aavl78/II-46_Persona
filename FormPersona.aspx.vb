@@ -50,10 +50,36 @@
         e.Cancel = True
         Gv_personas.EditIndex = -1
         Gv_personas.DataBind()
+
     End Sub
 
     Protected Sub Gv_personas_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim id As Integer = Convert.ToInt32(Gv_personas.DataKeys(e.Equals(id)))
+        Dim row As GridViewRow = Gv_personas.SelectedRow()
+        Dim id As Integer = Convert.ToInt32(row.Cells(2).Text)
         Dim Persona As Persona = New Persona()
+        Txt_nombre.Text = row.Cells(3).Text
+        Txt_apellido.Text = row.Cells(4).Text
+        Txt_edad.Text = row.Cells(5).Text
+        editando.Value = id
+        btn_guardar.Visible = False
+        btn_actualizar.Visible = True
+    End Sub
+
+    Protected Sub btn_actualizar_Click(sender As Object, e As EventArgs)
+
+        Dim Persona As Persona = New Persona With {
+        .Nombre = Txt_nombre.Text(),
+        .Apellido = Txt_apellido.Text(),
+        .Edad = Txt_edad.Text(),
+        .Id = editando.Value
+        }
+        dbHelper.Update(Persona)
+        Gv_personas.EditIndex = -1
+        Gv_personas.DataBind()
+        Txt_nombre.Text = ""
+        Txt_apellido.Text = ""
+        Txt_edad.Text = ""
+        btn_guardar.Visible = True
+        btn_actualizar.Visible = False
     End Sub
 End Class

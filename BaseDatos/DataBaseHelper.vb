@@ -22,7 +22,7 @@ Public Class DataBaseHelper
         Catch ex As Exception
 
         End Try
-        Return "Persona creada con éxito"
+        Return "Persona guardada con éxito"
 
     End Function
 
