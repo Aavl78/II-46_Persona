@@ -47,7 +47,7 @@ Public Class DataBaseHelper
     End Function
     Public Function Update(ByRef Persona As Persona) As String
         Try
-            Dim sql As String = "UPDATE Persona SET Nombre = @Nombre, Apellido = @Apellido, Edad = @Edad WHERE ID = @Id"
+            Dim sql As String = "UPDATE Personas SET Nombre = @Nombre, Apellido = @Apellido, Edad = @Edad WHERE ID = @Id"
             Dim Parametros As New List(Of SqlParameter) From {
                 New SqlParameter("@ID", Persona.ID),
                 New SqlParameter("@Nombre", Persona.Nombre),
